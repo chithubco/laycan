@@ -18,3 +18,10 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/test',function(){
+
+	$arrayName = array("Escravos","EGTL","Agbami");
+
+	return $arrayName[array_rand($arrayName)];
+});
