@@ -23,5 +23,7 @@ Route::get('/test',function(){
 
 	$arrayName = array("Escravos","EGTL","Agbami");
 
-	return $arrayName[array_rand($arrayName)];
+	return is_string($arrayName[array_rand($arrayName)]);
 });
+
+Route::resource('/production/create','DailyProductionController');
