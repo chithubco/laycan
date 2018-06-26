@@ -3,12 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row">
+        @include('vendor.flash.message')
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
+                <div class="panel-heading">Laycan Dash Board
+                </div>
+                <div class="panel-heading">
+                    @include('layouts.partials.nav-bar')
+                </div>                
+                
                 <div class="panel-body">
-                    You are logged in!
+                   @include('layouts.partials.add-production')
                 </div>
             </div>
         </div>
