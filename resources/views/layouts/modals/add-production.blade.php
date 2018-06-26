@@ -1,3 +1,6 @@
+@inject('terminals','App\Terminal')
+@inject('products','App\Product')
+
 <!-- Modal -->
 <div class="modal fade" id="addProductionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -8,38 +11,34 @@
         <div class="modal-body">
           <form method="post" action="{{ route('production.create.store') }}">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-              <div class="form-row">
-                <div class="form-group col-md-12">
-                  <label for="inputDate">Date</label>
-                  <input type="date" class="form-control" id="inputDate">
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Production Data Date</label>
+                  <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                 </div>
-                <div class="form-group col-md-12">
-                  <label for="inputTerminal">Terminal</label>
-                  <select id="inputTerminal" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>Agbami</option>
-                    <option>Escravos</option>
+
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Select Terminal</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    @foreach($terminals->getAll() as $terminal)
+                     <option>{{ $terminal->name }}</option>
+                    @endforeach
                   </select>
                 </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-12">
-                  <label for="inputAmount">Production</label>
-                  <input type="text" class="form-control" id="inputDate">
-                </div>
-                <div class="form-group col-md-12">
-                  <label for="inputTerminal">Product</label>
-                  <select id="inputTerminal" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>Crude</option>
-                    <option>Deisel</option>
-                    <option>LPG</option>
-                    <option>Condensate</option>
-                    <option>Naphtha</option>
-                    <option>TransMix</option>
+
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Select Product Stream</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    @foreach($products->getAll() as $product)
+                     <option>{{ $product->name }}</option>
+                    @endforeach
                   </select>
                 </div>
-              </div>
+
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Production Value</label>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="120,000">
+                </div>
+
               <div class="modal-footer">
                 <div class="form-row">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

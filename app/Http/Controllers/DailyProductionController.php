@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\DailyProduction;
 
 class DailyProductionController extends Controller
 {
@@ -36,7 +37,39 @@ class DailyProductionController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        //Condensate
+        DailyProduction::create([
+            'production_date' => $request['reportDate'],
+            'terminal_id' => 2,
+            'product_id' => 2,
+            'amount' => $request['condensateProduction'],
+            'user_id' => auth()->user()->id
+
+        ]);
+
+        //Diesel
+        DailyProduction::create([
+            'production_date' => $request['reportDate'],
+            'terminal_id' => 2,
+            'product_id' => 3,
+            'amount' => $request['dieselProduction'],
+            'user_id' => auth()->user()->id
+
+        ]);
+
+        //Naphtha
+        DailyProduction::create([
+            'production_date' => $request['reportDate'],
+            'terminal_id' => 2,
+            'product_id' => 4,
+            'amount' => $request['naphthaProduction'],
+            'user_id' => auth()->user()->id
+
+        ]);
+
+
+        flash("Production Data Created")->success()->important();
+        return redirect()->back();
     }
 
     /**
