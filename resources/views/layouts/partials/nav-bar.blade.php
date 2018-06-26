@@ -1,8 +1,8 @@
 <div>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductionModal">Add Production</button>
-<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addDailyProductionModal">Daily Production</button>
-{{-- <button type="button" class="btn btn-success">Success</button>
-<button type="button" class="btn btn-danger">Danger</button>
-<button type="button" class="btn btn-warning">Warning</button>
-<button type="button" class="btn btn-info">Info</button> --}}
+	<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addProductionModal">Add Production</button>
+	<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addDailyProductionModal">Daily Production</button>
+	<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#addExportModal">Add Export Data</button>
+	<button type="button" class="btn btn-danger">Send Reports</button>
+	<button type="button" class="btn btn-warning">Setting</button>
+	<button type="button" class="btn btn-info">Info</button>
 </div>

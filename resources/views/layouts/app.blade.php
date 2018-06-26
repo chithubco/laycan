@@ -81,6 +81,9 @@
     <div>
          @include('layouts.modals.add-daily-production')
     </div>
+    <div>
+         @include('layouts.modals.add-export')
+    </div>
    
 
     @yield('content')

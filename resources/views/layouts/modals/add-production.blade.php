@@ -5,7 +5,7 @@
 <div class="modal fade" id="addProductionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header text-white bg-primary">
           <h4 class="modal-title" id="exampleModalLongTitle">Add Daily Production</h4>
         </div>
         <div class="modal-body">

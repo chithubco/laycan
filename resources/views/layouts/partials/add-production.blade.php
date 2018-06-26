@@ -1,21 +1,21 @@
 <div class="card">
   <div class="card-header">
-    Featured
+    Export Life Cycle Management System
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
+    <h5 class="card-title">Export Management</h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-primary">View Export Records</a>
   </div>
 </div>
 <div class="card">
   <div class="card-header">
-    Featured
+    Daily Production Management
   </div>
   <div class="card-body">
     <h5 class="card-title">Special title treatment</h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-primary">View Production Data</a>
   </div>
 </div>
 <div class="card text-center">
