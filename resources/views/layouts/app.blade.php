@@ -88,6 +88,11 @@
          @include('layouts.modals.add-terminal')
     </div>
 
+    </div>
+       <div>
+         @include('layouts.modals.upload-document')
+    </div>
+
     @yield('content')
 
     <!-- JavaScripts -->

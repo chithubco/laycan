@@ -29,6 +29,16 @@ $factory->define(App\Lifter::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\DocumentCategory::class, function (Faker\Generator $faker) {
+    
+    $arDocumentCategory = array("NXP Documents","BOL Documents","CCI Documents","NESS Return Documents","Other Cargo Documents","Demmurage Documents","Outtrn Documents");
+
+    return [
+        'name' => $arDocumentCategory[array_rand($arDocumentCategory)],
+        'description' => $faker->sentence(),
+    ];
+});
+
 $factory->define(App\Consignee::class, function (Faker\Generator $faker) {
     
     $arConsignee = array("CPC","NNPC Consignee","STATOIL Consignee","CONCOIL Consignee","Eastern Hydrocarbon Funding LTD","Western Hydrocarbon Funding");

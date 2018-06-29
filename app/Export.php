@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Export;
 use Illuminate\Database\Eloquent\Model;
 
 class Export extends Model
@@ -16,4 +17,9 @@ class Export extends Model
     	'ness_processed','csc_processed','has_outturn',
     	'has_lossclaim','has_demurrage','demurrage_amount','cpc_notification_date','demurrage_ws_ready_date','demurrage_approval_date','document_link','user','comment','outturn_cost','loss_claim_amount'
     ];
+
+    public function getAll(){
+    	$exports = Export::all();
+    	return $exports;
+    }
 }

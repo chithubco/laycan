@@ -17,8 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call(TerminalProductSeeder::class);
         $this->call(ConsigneeSeeder::class);
         $this->call(LifterSeeder::class);
-         $this->call(CargoTypeSeeder::class);
+        $this->call(CargoTypeSeeder::class);
         $this->call(TerminalProductSeeder::class);
+        $this->call(DocumentCategorySeeder::class);
         //$this->call(DailyProductionSeeder::class);
         //$this->call(DailyProductionCommentSeeder::class);
     }
