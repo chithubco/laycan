@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="bc53e587-a21f-48f0-b660-a265a0fd1dec" name="laycan.org" url="http://laycan.org">
+        <fileTransfer host="laycan.org" port="22" rootFolder="/home/jfgful8dbn9w/laravel" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
