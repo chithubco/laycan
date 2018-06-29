@@ -13,7 +13,7 @@
                 </div>                
                 
                 <div class="panel-body">
-                   @include('layouts.partials.add-production')
+                   @include('layouts.partials.export-list')
                 </div>
             </div>
         </div>

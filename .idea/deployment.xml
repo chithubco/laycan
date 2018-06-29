@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="PublishConfigData" serverName="laycan.org">
+=======
+  <component name="PublishConfigData" autoUpload="Always" serverName="laycan.org">
+>>>>>>> 939b188c00f40477ec0ad2ff97e0f6b2b7db65b3
     <serverData>
       <paths name="laycan.org">
         <serverdata>
@@ -8,11 +12,20 @@
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
           </mappings>
           <excludedPaths>
+<<<<<<< HEAD
             <excludedPath local="true" path="$PROJECT_DIR$/public" />
             <excludedPath local="true" path="$PROJECT_DIR$/vendor" />
+=======
+            <excludedPath local="true" path="$PROJECT_DIR$/vendor" />
+            <excludedPath local="true" path="$PROJECT_DIR$/public" />
+>>>>>>> 939b188c00f40477ec0ad2ff97e0f6b2b7db65b3
           </excludedPaths>
         </serverdata>
       </paths>
     </serverData>
+<<<<<<< HEAD
+=======
+    <option name="myAutoUpload" value="ALWAYS" />
+>>>>>>> 939b188c00f40477ec0ad2ff97e0f6b2b7db65b3
   </component>
 </project>

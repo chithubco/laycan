@@ -2,7 +2,11 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
+<<<<<<< HEAD
       <webServer id="bc53e587-a21f-48f0-b660-a265a0fd1dec" name="laycan.org" url="http://laycan.org">
+=======
+      <webServer id="a6611109-72f0-4af4-9284-f95a6e1e450b" name="laycan.org" url="http://laycan.org">
+>>>>>>> 939b188c00f40477ec0ad2ff97e0f6b2b7db65b3
         <fileTransfer host="laycan.org" port="22" rootFolder="/home/jfgful8dbn9w/laravel" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />

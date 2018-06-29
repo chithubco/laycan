@@ -18,3 +18,14 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/test',function(){
+
+	$arrayName = array("Escravos","EGTL","Agbami");
+
+	return is_string($arrayName[array_rand($arrayName)]);
+});
+
+Route::resource('/production/create','DailyProductionController');
+Route::resource('/export','ExportController');
+Route::resource('/terminal','TerminalController');
