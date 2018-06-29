@@ -20,6 +20,35 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+$factory->define(App\Lifter::class, function (Faker\Generator $faker) {
+    $arCargoTypes = array("NNPC Cargo","NNPC Falcon Cargo","CNL 77% + Carrry","NNPC Carry PayBack","CNL Falcon Cargo","CNL Equity","Equity");
+
+    return [
+        'name' => $arCargoTypes[array_rand($arCargoTypes)],
+        'terminal_id' => $faker->numberBetween(1,5),
+    ];
+});
+
+$factory->define(App\Consignee::class, function (Faker\Generator $faker) {
+    
+    $arConsignee = array("CPC","NNPC Consignee","STATOIL Consignee","CONCOIL Consignee","Eastern Hydrocarbon Funding LTD","Western Hydrocarbon Funding");
+
+    return [
+        'name' => $arConsignee[array_rand($arConsignee)],
+        'terminal_id' => $faker->numberBetween(1,5),
+    ];
+});
+
+$factory->define(App\CargoType::class, function (Faker\Generator $faker) {
+    
+    $arCargoTypes = array("NNPC Cargo","NNPC Falcon Cargo","CNL 77% + Carrry","NNPC Carry PayBack","CNL Falcon Cargo","CNL Equity","Equity");
+
+    return [
+        'name' => $arCargoTypes[array_rand($arCargoTypes)],
+        'terminal_id' => $faker->numberBetween(1,5),
+    ];
+});
+
 
 $factory->define(App\Export::class, function (Faker\Generator $faker) {
 

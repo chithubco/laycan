@@ -27,3 +27,5 @@ Route::get('/test',function(){
 });
 
 Route::resource('/production/create','DailyProductionController');
+Route::resource('/export','ExportController');
+Route::resource('/terminal','TerminalController');

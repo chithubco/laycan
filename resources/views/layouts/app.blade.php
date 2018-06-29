@@ -84,7 +84,9 @@
     <div>
          @include('layouts.modals.add-export')
     </div>
-   
+       <div>
+         @include('layouts.modals.add-terminal')
+    </div>
 
     @yield('content')
 
@@ -94,5 +96,8 @@
 
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <script>
+    $('#flash-overlay-modal').modal();
+    </script>
 </body>
 </html>

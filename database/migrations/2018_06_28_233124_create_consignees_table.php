@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTerminalsTable extends Migration
+class CreateConsigneesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreateTerminalsTable extends Migration
      */
     public function up()
     {
-        Schema::create('terminals', function (Blueprint $table) {
+        Schema::create('consignees', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
-            $table->Integer('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('name');
+            $table->Integer('terminal_id')->unsigned()->index();
+            $table->foreign('terminal_id')->references('id')->on('terminals');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateTerminalsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('terminals');
+        Schema::drop('consignees');
     }
 }
