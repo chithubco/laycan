@@ -15,7 +15,7 @@
             <tr>
                 <td><a href="/export/{{ $export->id }}">{{ $export->cargo_no }}</a></td>
                 <td>{{ $export->vessel }}</td>
-                <td>{{ $export->terminal_id }}</td>
+                <td>{{ $export->terminal['name'] }}</td>
                 <td>{{ $export->norminated_cargo }}</td>
                 <td>{{ $export->bol_date }}</td>
                 <td>{{ $export->demurrage_amount }}</td>

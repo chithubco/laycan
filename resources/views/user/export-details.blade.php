@@ -14,6 +14,7 @@
                 
                 <div class="panel-body">
                    @include('layouts.partials.export-details')
+                   @include('layouts.partials.export-document-list')
                 </div>
             </div>
         </div>

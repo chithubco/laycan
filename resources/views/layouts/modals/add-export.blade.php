@@ -96,7 +96,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="inputConsignee">Consignee</label>
-            <select class="form-control" id="inputConsignee" name="consignee">
+            <select class="form-control" id="inputConsignee" name="consigneeID">
                 @foreach($consignees->getAll() as $consignee)
                      <option value="{{ $consignee->id }}">{{ $consignee->name }}</option>
                 @endforeach

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
-
+use App\Document;
 use App\Export;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class ExportController extends Controller
 {
@@ -54,7 +53,7 @@ class ExportController extends Controller
             'eta' =>  $request['ETA'],
             'desination' => $request['destination'],
             'inspector' =>  $request['inspector'],
-            'consignee' => $request['consignee'],
+            'consignee_id' => $request['consigneeID'],
             'dwt_of_vessel' => $request['DWTofVessel'],
             'flag_of_vessel' => $request['flagOfVessel'],
             'user'=> auth()->user()->id,
@@ -74,7 +73,10 @@ class ExportController extends Controller
     public function show($id)
     {
         $exportInstance = Export::find($id);
-        return view('user.export-details',compact('exportInstance'));
+        $cargo_no = $exportInstance->cargo_no;
+        $documents = Document::where('cargo_id','=',$cargo_no)->get();
+        
+        return view('user.export-details',compact('exportInstance','documents'));
     }
 
     /**
@@ -97,7 +99,49 @@ class ExportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $exportInstance = Export::find($id);
+
+        $exportInstance->terminal_id = $request['terminal'];
+        $exportInstance->product_id = $request['product'];
+        $exportInstance->lifter_id = $request['lifter'];
+        $exportInstance->cargo_type_id = $request['cargoType'];
+        $exportInstance->norminated_cargo = $request['nominatedVolume'];
+        $exportInstance->actual_cargo = $request['actualCargo'];
+        $exportInstance->bol_date = $request['BOL'];
+        $exportInstance->ship_figure = $request['shipFigures'];
+        $exportInstance->nxp_no = $request['NXPNumber'];
+        $exportInstance->vessel = $request['vesselName'];
+        $exportInstance->date_range = $request['dateRange'];
+        $exportInstance->eta = $request['ETA'];
+        $exportInstance->desination = $request['desination'];
+        $exportInstance->inspector = $request['inspector'];
+        $exportInstance->vessel_agent = $request['vesselAgent'];
+        $exportInstance->consignee_id = $request['consigneeID'];
+
+        $exportInstance->dwt_of_vessel = $request['DWTOfVessel'];
+        $exportInstance->flag_of_vessel = $request['FLAGOfVessel'];
+        $exportInstance->dpr_clearnace_date = $request['DPRClearanceDate'];
+        $exportInstance->nnpc_clearnace_date = $request['NNPCClearnaceDate'];
+        $exportInstance->di_date = $request['DIDate'];
+        $exportInstance->nxp_date = $request['NXPDate'];
+        $exportInstance->ness_processed = $request['NESSProcessed'];
+        $exportInstance->csc_processed = $request['CSCProccessed'];
+        $exportInstance->has_outturn = $request['hasOutturnVerification'];
+        $exportInstance->has_lossclaim = $request['hasLossClaim'];
+        $exportInstance->has_demurrage = $request['hasDemurrage'];
+        $exportInstance->demurrage_amount = $request['demurrageAmount'];
+        // $exportInstance->cpc_notification_date = $request['terminal'];
+        // $exportInstance->demurrage_ws_ready_date = $request['terminal'];
+        // $exportInstance->demurrage_approval_date = $request['terminal'];
+        $exportInstance->comment = $request['comment'];
+        $exportInstance->outturn_cost = $request['outturnCost'];
+        $exportInstance->loss_claim_amount = $request['lossClaimCost'];
+
+        $exportInstance->save();
+
+        flash('Update Successful')->success();
+
+        return redirect('/export');
     }
 
     /**

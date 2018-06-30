@@ -31,7 +31,7 @@ class ExportTableMigration extends Migration
             $table->string('desination')->nullable();
             $table->string('inspector')->nullable();
             $table->string('vessel_agent')->nullable();
-            $table->string('consignee')->nullable();
+            $table->integer('consignee_id')->nullable();
             $table->string('dwt_of_vessel')->nullable();
             $table->string('flag_of_vessel')->nullable();
             $table->date('dpr_clearnace_date')->nullable();

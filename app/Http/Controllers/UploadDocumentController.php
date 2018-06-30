@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Document;
 use App\DocumentCategory;
 use App\Http\Requests;
 use App\Terminal;
@@ -16,7 +17,9 @@ class UploadDocumentController extends Controller
      */
     public function index()
     {
-        //
+        $documents = Document::all();
+
+        return view('user.document-list',compact('documents'));
     }
 
     /**
@@ -50,13 +53,29 @@ class UploadDocumentController extends Controller
             $fileName = $request['cargoID'].'_'.$documentName;
 
             $uploadFile->move('Docs/'.$terminalName.'/'.$request['cargoID'],$fileName.".{$ext}");
+
+            $document = Document::create([
+                'terminal_id' => $request['terminal'],
+                'cargo_id' => $request['cargoID'],
+                'category_id' => $request['documentCategory'],
+                'comment' => $request['documentComment'],
+                'user_id' => auth()->user()->id,
+                'path' => 'Docs/'.$terminalName.'/'.$request['cargoID'].'/'.$fileName.".{$ext}",
+            ]);
+
+
+            flash('File Record Successfully Uploaded')->success()->important();
+            flash()->overlay('File Record Upload Successful', 'Success Message');
+            return redirect('/upload');
+
+
         } else {
-            # code...
+
+            flash('Error Uploading File')->error()->important();
+            flash()->overlay('Error Uploading File', 'Error Message');
+            return redirect()->back();
         }
         
-        
-
-        return $request;
     }
 
     /**
