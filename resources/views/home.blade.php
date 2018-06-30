@@ -6,7 +6,7 @@
         @include('vendor.flash.message')
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Menu
+                <div class="panel-heading">
                 </div>
                 <div class="panel-heading">
                     @include('layouts.partials.nav-bar')

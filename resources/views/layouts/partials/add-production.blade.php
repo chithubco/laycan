@@ -24,9 +24,9 @@
           Export Management
         </a>
         <a href="{{ route('export.index') }}" class="list-group-item">View Export Records</a>
-        <a href="#" class="list-group-item">Add Export</a>
+        <a data-toggle="modal" href="#addExportModal" class="list-group-item">Add Export</a>
         <a href="#" class="list-group-item">Export Performance Map</a>
-        <a href="#" class="list-group-item">Vestibulum at eros</a>
+        <a href="#" class="list-group-item" data-toggle="modal" data-target="#addTerminalModal">Add Terminal</a>
       </div>
   </div>
   <div class="col-md-6">
@@ -35,7 +35,8 @@
           Document Management
         </a>
         <a href="{{ route('upload.index') }}" class="list-group-item">View Documents Record</a>
-        <a href="#" class="list-group-item">Add New Document</a>
+        <a href="#" class="list-group-item" data-toggle="modal" data-target="#addUploadDocumentModal">Add New Document</a>
+        <a href="#" class="list-group-item" data-toggle="modal" data-target="#addCargotype">Create Document Category</a>
       </div>
   </div>
 </div>

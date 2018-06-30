@@ -16,8 +16,7 @@ class CreateLiftersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('label')->nullable();
-            $table->Integer('terminal_id')->unsigned()->index();
-            $table->foreign('terminal_id')->references('id')->on('terminals');
+            $table->Integer('terminal_id')->index();
             $table->timestamps();
         });
     }

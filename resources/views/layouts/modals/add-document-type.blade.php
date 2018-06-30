@@ -14,12 +14,12 @@
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 
                 <div class="form-group">
-                  <label for="inputComment">Enter File Description</label>
+                  <label for="inputComment">Category Name</label>
                   <input type="text" class="form-control"  name="name" id="inputComment"></input type="text">
                 </div>
 
                 <div class="form-group">
-                  <label for="inputComment">Enter File Description</label>
+                  <label for="inputComment">Category Description</label>
                   <textarea class="form-control" rows="3" name="description" id="inputComment"></textarea>
                 </div>
               <div class="modal-footer">

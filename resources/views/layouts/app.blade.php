@@ -100,6 +100,15 @@
     <div>
          @include('layouts.modals.add-document-type')
     </div>
+    <div>
+         @include('layouts.modals.add-lifter')
+    </div>
+    <div>
+         @include('layouts.modals.add-cargo-type')
+    </div>
+    <div>
+         @include('layouts.modals.add-consignee')
+    </div>
 
     @yield('content')
 

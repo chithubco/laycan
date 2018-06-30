@@ -15,8 +15,7 @@ class CreateConsigneesTable extends Migration
         Schema::create('consignees', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->Integer('terminal_id')->unsigned()->index();
-            $table->foreign('terminal_id')->references('id')->on('terminals');
+            $table->Integer('terminal_id')->index();
             $table->timestamps();
         });
     }

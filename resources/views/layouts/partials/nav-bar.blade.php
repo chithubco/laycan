@@ -5,5 +5,8 @@
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTerminalModal">Add new Terminal</button>
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUploadDocumentModal">Upload Documents</button>
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDocumentType">Document Type</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addLifter">Add Lifter</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCargotype">Add CargoType</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addConsignee">Add Consignee</button>
 	<button type="button" class="btn btn-primary">Setting<span class="glyphicon glyphicon-wrench" aria-hidden="true"></button>
 </div>
