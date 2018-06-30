@@ -66,7 +66,7 @@ class UploadDocumentController extends Controller
 
             flash('File Record Successfully Uploaded')->success()->important();
             flash()->overlay('File Record Upload Successful', 'Success Message');
-            return redirect('/upload');
+            return redirect()->back();
 
 
         } else {

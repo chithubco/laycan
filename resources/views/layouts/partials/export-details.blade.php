@@ -1,3 +1,9 @@
+@inject('terminals','App\Terminal')
+@inject('products','App\Product')
+@inject('lifters','App\Lifter')
+@inject('consignees','App\Consignee')
+@inject('cargoTypes','App\CargoType')
+
 <div>
 <form method="post" action="{{ route('export.update',$exportInstance->id) }}">
 	<input type="hidden" name="_method" value="PUT">
@@ -14,15 +20,18 @@
     </div>
     <div class="form-group col-md-4">
       <label for="inputTerminal">Terminal</label>
-      <select class="form-control" id="inputTerminal" name="terminal">
-      	<option>{{ $exportInstance->terminal['name'] }}</option>
+      <select class="form-control" id="inputTerminal" name="terminal" disabled="">
+      	<option {{ $exportInstance->terminal['id'] }} selected="">{{ $exportInstance->terminal['name'] }}</option>
       </select>
     </div>
 
     <div class="form-group col-md-4">
       <label for="inputProduct">Product Stream</label>
       <select class="form-control" id="inputProduct" name="product">
-      	<option>{{ $exportInstance->product['name'] }}</option>
+      	<option value="{{ $exportInstance->product['id'] }}" selected="">{{ $exportInstance->product['name'] }}</option>
+        @foreach($products->getAll() as $product)
+        <option value="{{ $product->id }}">{{ $product->name }}</option>
+        @endforeach
       </select>
     </div>
   </div>
@@ -32,7 +41,10 @@
     <div class="form-group col-md-4">
       <label for="inputTerminal">Lifter</label>
       <select class="form-control" id="inputTerminal" name="lifter">
-      	<option>{{ $exportInstance->lifter['name'] }}</option>
+      	<option value="{{ $exportInstance->lifter['id'] }}" selected="">{{ $exportInstance->lifter['name'] }}</option>
+        @foreach($lifters->getAll() as $lifter)
+            <option value="{{ $lifter->id }}">{{ $lifter->name }}</option>
+        @endforeach
       </select>
     </div>
 
@@ -52,7 +64,10 @@
     <div class="form-group col-md-4">
       <label for="inputTerminal">Cargo Type</label>
       <select class="form-control" id="inputTerminal" name="cargoType">
-      	<option>{{ $exportInstance->cargoType['name']}}</option>
+      	<option value="{{ $exportInstance->cargoType['id']}}" selected="">{{ $exportInstance->cargoType['name']}}</option>
+        @foreach($cargoTypes->getAll() as $cargoType)
+            <option value="{{ $cargoType->id }}">{{ $cargoType->name }}</option>
+        @endforeach
       </select>
     </div>
 
@@ -68,7 +83,16 @@
 
   </div>
 
-  <div class="form-row">  
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputTerminal">Consignee</label>
+      <select class="form-control" id="inputTerminal" name="consigneeID">
+        <option value="{{ $exportInstance->consignee_id }}">{{ $exportInstance->consignee['name'] }}</option>
+        @foreach($consignees->getAll() as $consignee)
+          <option value="{{ $consignee->id }}">{{ $consignee->name }}</option>
+        @endforeach
+      </select>
+    </div>  
     <div class="form-group col-md-4">
       <label for="inputTerminal">Actual Lifted Volume</label>
       <input type="text" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->actual_cargo }}" name="actualCargo">
@@ -77,16 +101,13 @@
       <label for="inputCargoNumber">Ship Figures</label>
       <input type="text" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->ship_figure }}" name="shipFigures">
     </div>
-
-    <div class="form-group col-md-4">
-      <label for="inputTerminal">Consignee</label>
-      <select class="form-control" id="inputTerminal" name="consigneeID">
-      	<option>{{ $exportInstance->consignee_id }}</option>
-      </select>
-    </div>
   </div>
 
-  <div class="form-row">  
+  <div class="form-row"> 
+    <div class="form-group col-md-4">
+      <label for="inputCargoNumber">Date Range</label>
+      <input type="date" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->date_range }}" name="dateRange">
+    </div> 
     <div class="form-group col-md-4">
       <label for="inputTerminal">NXP Number</label>
       <input type="text" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->nxp_no }}" name="NXPNumber">
@@ -95,10 +116,6 @@
       <label for="inputCargoNumber">NXP Date</label>
       <input type="date" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->nxp_date }}" name="NXPDate">
     </div>
-
-    <div class="form-group col-md-4">
-    	<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-	    <input type="file" class="form-control" id="inputGroupFile01" name="NXPFile">
   </div>
 
 	<div class="form-row">  
@@ -118,10 +135,6 @@
   </div>
 
   <div class="form-row"> 
-  	<div class="form-group col-md-4">
-      <label for="inputCargoNumber">Date Range</label>
-      <input type="date" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->date_range }}" name="dateRange">
-    </div>
 
     <div class="form-group col-md-4">
       <label for="inputTerminal">DWT of Vessel</label>
@@ -131,64 +144,55 @@
       <label for="inputCargoNumber">FLAG of Vessel</label>
       <input type="text" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->flag_of_vessel }}" name="FLAGOfVessel">
     </div>
+    <div class="form-group col-md-4">
+      <label for="inputCargoNumber">Upload Export Documents</label>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUploadDocumentModal">Upload Documents</button>
+    </div>
   </div>
 
   <div class="form-row">  
-    <div class="form-group col-md-3">
+    <div class="form-group col-md-4">
       <label for="inputTerminal">DPR Clearance Date</label>
       <input type="date" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->dpr_clearnace_date }}" name="DPRClearanceDate">
     </div>
-    <div class="form-group col-md-3">
-    	<label class="custom-file-label" for="inputGroupFile01">Upload DPR Clerance</label>
-	    <input type="file" class="form-control" id="inputGroupFile01" name="DPRClearanceUpload">
-  	</div>
-  	<div class="form-group col-md-3">
+    
+  	<div class="form-group col-md-4">
       <label for="inputTerminal">NNPC Clearance Date</label>
       <input type="date" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->nnpc_clearnace_date }}" name="NNPCClearnaceDate">
     </div>
-    <div class="form-group col-md-3">
-    	<label class="custom-file-label" for="inputGroupFile01">Upload NNPC Clerance</label>
-	    <input type="file" class="form-control" id="inputGroupFile01" name="NNPCClearanceFile">
-  	</div>
+    <div class="form-group col-md-4">
+      <label for="inputTerminal">DI Date</label>
+      <input type="date" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->di_date }}" name="DIDate">
+    </div>
   </div>
 
-  <div class="form-row">  
-    <div class="form-group col-md-6">
-      <label for="inputTerminal">DI Date</label>
-      <input type="date" class="form-control" id="inputCargoNumber" value="{{ $exportInstance->cargo_no }}" name="DIDate">
-    </div>
-    <div class="form-group col-md-6">
-    	<label class="custom-file-label" for="inputGroupFile01">Upload DI</label>
-	    <input type="file" class="form-control" id="inputGroupFile01" name="DIFile">
-  	</div>
-  </div>
 
   <div class="form-row">
 	  <div class="col-md-4">
 	  	<label for="inputTerminal">NESS Processed</label>
 	    <div class="input-group">
 	      <span class="input-group-addon">
-	        <input type="radio" aria-label="..." name="NESSProcessed" value="{{ $exportInstance->ness_processed }}">
+	        <input type="checkbox" aria-label="..." name="NESSProcessed" value="1" {{ $exportInstance->ness_processed == "1" ?'checked='.'"'.'checked'.'"' : '' }}>
 	      </span>
-	      <input type="text" class="form-control" aria-label="..." placeholder="Enter NESS Number" value="{{ $exportInstance->ness_processed }}">
+	      <input type="text" class="form-control" aria-label="..." placeholder="Enter NESS Number" value="{{ $exportInstance->ness_no }}" name="nessNumber">
 	    </div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
 	  <div class="col-md-4">
 	  	<label for="inputTerminal">CCI Processed</label>
 	    <div class="input-group">
 	      <span class="input-group-addon">
-	        <input type="radio" aria-label="..." name="CCIProcessed">
+	        <input type="checkbox" aria-label="..." name="CCIProcessed" value="1" {{ $exportInstance->cci_processed == "1" ?'checked='.'"'.'checked'.'"' : '' }}>
 	      </span>
-	      <input type="text" class="form-control" aria-label="..." placeholder="Enter CCI Number" >
+	      <input type="text" class="form-control" placeholder="Enter CCI Number" value="{{ $exportInstance->cci_no }}" name="cciNumber">
 	    </div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
 	  <div class="col-md-4">
 	  	<label for="inputTerminal">CSC Processed</label>
 	    <div class="input-group">
 	      <span class="input-group-addon">
-	        <input type="radio" aria-label="..." name="CSCProccessed">
+	        <input type="checkbox" aria-label="..." name="CSCProccessed" value="1" {{ $exportInstance->csc_processed == "1" ?'checked='.'"'.'checked'.'"' : '' }}>
 	      </span>
-	      <input type="text" class="form-control" aria-label="..." placeholder="Enter CSC Number">
+	      <input type="text" class="form-control" placeholder="Enter CSC Number" value="{{ $exportInstance->csc_no }}" name="cscNumber">
 	    </div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
   </div><!-- /.row -->
@@ -198,34 +202,34 @@
 	  	<label for="inputTerminal">Outturn Verification</label>
 	    <div class="input-group">
 	      <span class="input-group-addon">
-	        <input type="radio" aria-label="..." name="hasOutturnVerification" value="{{ $exportInstance->has_outturn }}">
+	        <input type="checkbox" aria-label="..." name="hasOutturnVerification" value="1" {{ $exportInstance->has_outturn == "1" ?'checked='.'"'.'checked'.'"' : '' }}>
 	      </span>
-	      <input type="text" class="form-control" aria-label="..." placeholder="Enter total outturn cost" value="{{ $exportInstance->outturn_cost }}" name="outturnCost">
+	      <input type="number" class="form-control" aria-label="..." placeholder="Enter total outturn cost" value="{{ $exportInstance->outturn_cost }}" name="outturnCost">
 	    </div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
 	  <div class="col-md-4">
 	  	<label for="inputTerminal">Loss Claim</label>
 	    <div class="input-group">
 	      <span class="input-group-addon">
-	        <input type="radio" aria-label="..." name="hasLossClaim" value="{{ $exportInstance->has_lossclaim }}">
+	        <input type="checkbox" aria-label="..." name="hasLossClaim" value="1" {{ $exportInstance->has_lossclaim == "1" ?'checked='.'"'.'checked'.'"' : '' }}>
 	      </span>
-	      <input type="text" class="form-control" aria-label="..." placeholder="Enter total Loss Claim" value="{{ $exportInstance->loss_claim_amount }}" name="lossClaimCost">
+	      <input type="number" class="form-control" aria-label="..." placeholder="Enter total Loss Claim" value="{{ $exportInstance->loss_claim_amount }}" name="lossClaimCost">
 	    </div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
 	  <div class="col-md-4">
 	  	<label for="inputTerminal">Demurrage</label>
 	    <div class="input-group">
 	      <span class="input-group-addon">
-	        <input type="radio" aria-label="..." name="hasDemurrage" value="{{ $exportInstance->has_demurrage }}">
+	        <input type="checkbox" name="hasDemurrage" {{ $exportInstance->has_demurrage == "1" ?'checked='.'"'.'checked'.'"' : '' }} value="1">
 	      </span>
-	      <input type="text" class="form-control" aria-label="..." placeholder="Enter Total Demurrage" value="{{ $exportInstance->demurrage_amount }}" name="demurrageAmount">
+	      <input type="number" class="form-control" aria-label="..." placeholder="Enter Total Demurrage" value="{{ $exportInstance->demurrage_amount }}" name="demurrageAmount">
 	    </div><!-- /input-group -->
 	  </div><!-- /.col-lg-6 -->
   </div><!-- /.row -->
 
   <div class="form-group">
     <label for="inputAddress">General Comment</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment"></textarea>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment">{{ $exportInstance->comment }}</textarea>
   </div>
 
   <div class="form-row">

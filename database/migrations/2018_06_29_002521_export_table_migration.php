@@ -39,7 +39,11 @@ class ExportTableMigration extends Migration
             $table->date('di_date')->nullable();
             $table->date('nxp_date')->nullable();
             $table->boolean('ness_processed')->default(0);
+            $table->string('ness_no')->nullable();
             $table->boolean('csc_processed')->default(0);
+            $table->string('csc_no')->nullable();
+            $table->boolean('cci_processed')->default(0);
+            $table->string('cci_no')->nullable();
             $table->boolean('has_outturn')->default(0);
             $table->boolean('has_lossclaim')->default(0);
             $table->boolean('has_demurrage')->default(0);

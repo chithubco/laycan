@@ -25,8 +25,9 @@
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Unique Export ID</label>
                   <select class="form-control" id="exampleFormControlSelect1" name="cargoID">
+                      <option value="General">General</option>
                     @foreach($exports->getAll() as $export)
-                     <option>{{ $export->cargo_no }}</option>
+                     <option value="{{ $export->cargo_no }}">{{ $export->cargo_no }}</option>
                     @endforeach
                   </select>
                 </div>

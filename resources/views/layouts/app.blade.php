@@ -94,8 +94,11 @@
     </div>
 
     </div>
-       <div>
+    <div>
          @include('layouts.modals.upload-document')
+    </div>
+    <div>
+         @include('layouts.modals.add-document-type')
     </div>
 
     @yield('content')

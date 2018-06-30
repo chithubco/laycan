@@ -59,9 +59,11 @@ class ExportController extends Controller
             'user'=> auth()->user()->id,
         ]);
 
-        flash($newExportRecord)->success()->important();
-        flash()->overlay($newExportRecord , 'Success Message');
-        return redirect()->back();
+        flash('New Export Record Successfully Added')->success()->important();
+        flash()->overlay('New Export Record Successfully Added' , 'Success Message');
+        
+        $exports = Export::all();
+        return view('user.export-list',compact('exports'));
     }
 
     /**
@@ -101,7 +103,7 @@ class ExportController extends Controller
     {
         $exportInstance = Export::find($id);
 
-        $exportInstance->terminal_id = $request['terminal'];
+        // $exportInstance->terminal_id = $request['terminal'];
         $exportInstance->product_id = $request['product'];
         $exportInstance->lifter_id = $request['lifter'];
         $exportInstance->cargo_type_id = $request['cargoType'];
@@ -117,7 +119,6 @@ class ExportController extends Controller
         $exportInstance->inspector = $request['inspector'];
         $exportInstance->vessel_agent = $request['vesselAgent'];
         $exportInstance->consignee_id = $request['consigneeID'];
-
         $exportInstance->dwt_of_vessel = $request['DWTOfVessel'];
         $exportInstance->flag_of_vessel = $request['FLAGOfVessel'];
         $exportInstance->dpr_clearnace_date = $request['DPRClearanceDate'];
@@ -125,7 +126,14 @@ class ExportController extends Controller
         $exportInstance->di_date = $request['DIDate'];
         $exportInstance->nxp_date = $request['NXPDate'];
         $exportInstance->ness_processed = $request['NESSProcessed'];
+        $exportInstance->ness_no = $request['nessNumber'];
+
+        $exportInstance->cci_processed = $request['CCIProcessed'];
+        $exportInstance->csc_no = $request['cciNumber'];
+
         $exportInstance->csc_processed = $request['CSCProccessed'];
+        $exportInstance->csc_no = $request['cscNumber'];
+        
         $exportInstance->has_outturn = $request['hasOutturnVerification'];
         $exportInstance->has_lossclaim = $request['hasLossClaim'];
         $exportInstance->has_demurrage = $request['hasDemurrage'];
@@ -141,7 +149,8 @@ class ExportController extends Controller
 
         flash('Update Successful')->success();
 
-        return redirect('/export');
+        $exports = Export::all();
+        return view('user.export-list',compact('exports'));
     }
 
     /**

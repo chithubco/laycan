@@ -30,3 +30,4 @@ Route::resource('/production/create','DailyProductionController');
 Route::resource('/export','ExportController');
 Route::resource('/terminal','TerminalController');
 Route::resource('/upload','UploadDocumentController');
+Route::resource('/documentcategory','DocumentCategoryController');
