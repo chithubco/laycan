@@ -6,14 +6,14 @@
         @include('vendor.flash.message')
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">
+                <div class="panel-heading">Menu
                 </div>
                 <div class="panel-heading">
                     @include('layouts.partials.nav-bar')
                 </div>                
                 
                 <div class="panel-body">
-                   @include('layouts.partials.add-production')
+                   @include('layouts.partials.document-template-list')
                 </div>
             </div>
         </div>

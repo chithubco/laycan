@@ -7,8 +7,8 @@ FusionCharts.ready(function(){
     dataFormat: 'json',
     dataSource: {
         "chart": {
-            "caption": "Split of Demurrage Root Cause By Categories",
-            "subCaption": "2010 - 2018",
+            "caption": "Demurrage Root Cause By Categories",
+            "subCaption": "2018 Jan-June",
             "numberPrefix": "$",
             "showBorder": "0",
             "use3DLighting": "0",
@@ -18,7 +18,7 @@ FusionCharts.ready(function(){
             "showPercentValues": "1",
             "showLegend": "1",
             "defaultCenterLabel": "Total Demurrage: $64.08K",
-            "centerLabel": "Revenue from $label: $value",
+            "centerLabel": "Cost from $label: $value",
             "centerLabelBold": "1",
             "showTooltip": "0",
             "decimals": "0",
@@ -42,4 +42,4 @@ FusionCharts.ready(function(){
 }
 );
     fusioncharts.render();
-    });
+});

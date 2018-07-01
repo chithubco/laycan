@@ -31,3 +31,8 @@ Route::resource('/export','ExportController');
 Route::resource('/terminal','TerminalController');
 Route::resource('/upload','UploadDocumentController');
 Route::resource('/documentcategory','DocumentCategoryController');
+Route::resource('/lifter','LifterController');
+Route::resource('/cargotype','CargoTypeController');
+Route::resource('/consignee','ConsigneeController');
+Route::resource('/doctemplate','DocumentTemplateController');
+Route::resource('/exportmap','ExportMapController');

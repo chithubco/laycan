@@ -8,7 +8,8 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Your Application's Landing Page.
+                    Welcome to LAYCAN Your Export Management System.
+                    <p> Click on the Login button above to get started</p>
                 </div>
             </div>
         </div>

@@ -1,9 +1,13 @@
-<div>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductionModal">Add Production</button>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDailyProductionModal">Daily Production</button>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addExportModal">Add Export Data</button>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTerminalModal">Add new Terminal</button>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUploadDocumentModal">Upload Documents</button>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDocumentType">Document Type</button>
-	<button type="button" class="btn btn-primary">Setting<span class="glyphicon glyphicon-wrench" aria-hidden="true"></button>
+<div class="btn-group" role="group" aria-label="...">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProductionModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Production</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDailyProductionModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Daily Production</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addExportModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Export Data</button>
+	{{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTerminalModal">Terminal</button> --}}
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addUploadDocumentModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Upload Documents</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDocumentType"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Document Type</button>
+{{-- 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addLifter">Lifter</button> --}}
+{{-- 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCargotype">CargoType</button> --}}
+{{-- 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addConsignee">Consignee</button> --}}
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDocumentTemplateModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Doc Templates</button>
+	<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Setting</button>
 </div>

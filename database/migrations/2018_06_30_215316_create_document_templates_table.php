@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLiftersTable extends Migration
+class CreateDocumentTemplatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,13 @@ class CreateLiftersTable extends Migration
      */
     public function up()
     {
-        Schema::create('lifters', function (Blueprint $table) {
+        Schema::create('document_templates', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('label')->nullable();
-            $table->Integer('terminal_id')->index();
+            $table->text('description');
+            $table->integer('terminal_id');
+            $table->string('path');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateLiftersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('lifters');
+        Schema::drop('document_templates');
     }
 }
