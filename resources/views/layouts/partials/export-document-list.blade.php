@@ -6,7 +6,7 @@
 </div>
 <div class="list-group">
     @foreach($documents as $document)
-        <a href="{{ $document->path }}" class="list-group-item"><span class="strong">{{ $document->category['name'] }}</span> Created By :  <span class="label label-success">{{ $document->user['name'] }}</span> Create - {{ $document->created_at->diffForHumans() }}<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a>
+        <a href="{{ url($document->path) }}" target="_blank" class="list-group-item"><span class="strong">{{ $document->category['name'] }}</span> Created By :  <span class="label label-success">{{ $document->user['name'] }}</span> Create - {{ $document->created_at->diffForHumans() }}<span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a>
   @endforeach 
 </div>
 <div>

@@ -109,6 +109,17 @@
     <div>
          @include('layouts.modals.add-consignee')
     </div>
+        <div>
+         @include('layouts.modals.add-document-template')
+    </div>
+    </div>
+        <div>
+         @include('layouts.modals.update-document-template')
+    </div>
+    </div>
+        <div>
+         @include('layouts.modals.email-document-template')
+    </div>
 
     @yield('content')
 
@@ -117,7 +128,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" src="js/ajax.js"></script>
 
 
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
