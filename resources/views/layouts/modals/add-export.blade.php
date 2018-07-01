@@ -78,11 +78,11 @@
        <div class="form-row ">
           <div class="form-group col-md-4">
             <label for="inputDestination">Destination</label>
-            <input type="text" class="form-control" id="inputDestination" placeholder="Funiwa Production" name="destination">
+            <input type="text" class="form-control" id="inputDestination" placeholder="Enter Destination" name="destination">
           </div>
           <div class="form-group col-md-4">
             <label for="inputInspector">Inspector</label>
-            <input type="text" class="form-control" id="inputInspector" placeholder="CONCOG Production" name="inspector">
+            <input type="text" class="form-control" id="inputInspector" placeholder="Enter Inspector" name="inspector">
           </div>
           <div class="form-group col-md-4">
             <label for="inputFLAFofVessel">FLAG of Vessel</label>
@@ -92,7 +92,7 @@
       <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputDWTofVessel">DWT of Vessel</label>
-            <input type="text" class="form-control" id="inputDWTofVessel" placeholder="LPG QOH MTons" name="DWTofVessel">
+            <input type="text" class="form-control" id="inputDWTofVessel" placeholder="Enter DWT of Vessel" name="DWTofVessel">
           </div>
           <div class="form-group col-md-6">
             <label for="inputConsignee">Consignee</label>
@@ -113,7 +113,7 @@
        <div class="modal-footer">
       <div class="form-row">
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" id="butClearDailyProduction">Clear Field</button>
+                  {{-- <button type="button" class="btn btn-primary" id="butClearDailyProduction">Clear Field</button> --}}
                   <button type="submit" class="btn btn-primary">Save changes</button>
             </div>
        </div>

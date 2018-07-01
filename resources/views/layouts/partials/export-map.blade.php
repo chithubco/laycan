@@ -89,7 +89,19 @@
 					</div>
 					<ul class="timeline">
 						<li class="timeline-item">
-							<div class="timeline-badge danger"><i class="glyphicon glyphicon-off"></i></div>
+							<div class="timeline-badge warning"><i class="glyphicon glyphicon-off"></i></div>
+							<div class="timeline-panel">
+								<div class="timeline-heading">
+									<h4 class="timeline-title">Basic Export Data Entered</h4>
+									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by AGBOGO Michael</small></p>
+								</div>
+								<div class="timeline-body">
+									<p>Basic Export Details entered into the system and updated</p>
+								</div>
+							</div>
+						</li>
+						<li class="timeline-item">
+							<div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4 class="timeline-title">Nomination Letter Ready and Sent</h4>
@@ -101,7 +113,7 @@
 							</div>
 						</li>
 						<li class="timeline-item">
-							<div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
+							<div class="timeline-badge success"><i class="glyphicon glyphicon-bookmark"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4 class="timeline-title">NXP Forms Ready</h4>
@@ -139,7 +151,7 @@
 							</div>
 						</li>
 						<li class="timeline-item">
-							<div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
+							<div class="timeline-badge warning"><i class="glyphicon glyphicon-unchecked"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4 class="timeline-title">NNPC Clearance Recieved</h4>
@@ -151,7 +163,7 @@
 							</div>
 						</li>
 						<li class="timeline-item">
-							<div class="timeline-badge danger"><i class="glyphicon glyphicon"></i></div>
+							<div class="timeline-badge danger"><i class="glyphicon glyphicon-bell"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4 class="timeline-title">DPR Clerance Recieved</h4>
@@ -163,7 +175,7 @@
 							</div>
 						</li>
 						<li class="timeline-item">
-							<div class="timeline-badge danger"><i class="glyphicon glyphicon"></i></div>
+							<div class="timeline-badge primary"><i class="glyphicon glyphicon-minus-sign"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4 class="timeline-title">3Q Export Permit Available</h4>

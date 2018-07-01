@@ -73,10 +73,11 @@ $factory->define(App\Export::class, function (Faker\Generator $faker) {
 
     return [
         'cargo_no' => $arEP[array_rand($arEP)].'-'.$faker->numberBetween(10,1000),
-        'terminal' => $arTerminal[array_rand($arTerminal)],
-        'product' => $arProduct[array_rand($arProduct)],
-        'lifter' => $arLifter[array_rand($arLifter)],
-        'cargo_type' => $arCargoTypes[array_rand($arCargoTypes)],
+        'terminal_id' => $faker->numberBetween(1,5),
+        'product_id' => $faker->numberBetween(1,5),
+        'lifter_id' => $faker->numberBetween(1,5),
+        'cargo_type_id' => $faker->numberBetween(1,5),
+
         'norminated_cargo' => $faker->numberBetween(400000,1000000),
         'actual_cargo' => $faker->numberBetween(400000,1000000),
         'bol_date' => $faker->dateTimeThisYear('2018-12-31 20:52:14', 'Africa/Lagos'),
@@ -89,7 +90,7 @@ $factory->define(App\Export::class, function (Faker\Generator $faker) {
         'inspector' =>  $faker->company,
         'vessel_agent' =>  $faker->company,
 
-        'consignee' => $arConsignee[array_rand($arConsignee)],
+        'consignee_id' => $faker->numberBetween(1,5),
         'dwt_of_vessel' => $faker->city,
         'flag_of_vessel' => $faker->state,
         'dpr_clearnace_date' =>  $faker->dateTimeThisYear('2018-12-31 20:52:14', 'Africa/Lagos'),
