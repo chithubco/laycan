@@ -47,7 +47,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laycan
+                    LAYCAN
                 </a>
             </div>
 
