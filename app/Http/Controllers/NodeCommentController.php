@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\NodeElement;
+use App\NodeComment;
+
 class NodeCommentController extends Controller
 {
     /**
@@ -36,7 +39,22 @@ class NodeCommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $nodeComment = NodeComment::create([
+            'node_element_id' => $request['nodeElementID'],
+            'comment' => $request['comment'],
+            'user_id' => auth()->user()->id
+        ]);
+
+        $node = NodeElement::find($request['nodeElementID']);
+        $node->status_id = $request['nodeElementStatus'];
+        $node->save();
+
+
+        
+        flash('Update Successful')->success()->important();
+        flash()->overlay('Update Successful', 'Success Message');
+
+        return redirect()->back();
     }
 
     /**
@@ -81,6 +99,28 @@ class NodeCommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $nodeComment = NodeComment::find($id);
+        $nodeComment->delete();
+
+        flash('Comment Delete Successful')->success()->important();
+        flash()->overlay('Comment Delete Successful', 'Success Message');
+
+        return response()->json([
+            'id' => $id,
+        ]);
     }
+
+    // public function delete(Request $request)
+    // {
+    //     $id = $request->input('id');
+    //     $nodeComment = NodeComment::find($id);
+    //     $nodeComment->delete();
+
+    //     flash('Comment Delete Successful')->success()->important();
+    //     flash()->overlay('Comment Delete Successful', 'Success Message');
+
+    //     return response()->json([
+    //         'id' => $id,
+    //     ]);
+    // }
 }

@@ -36,3 +36,4 @@ Route::resource('/cargotype','CargoTypeController');
 Route::resource('/consignee','ConsigneeController');
 Route::resource('/doctemplate','DocumentTemplateController');
 Route::resource('/exportmap','ExportMapController');
+Route::resource('/exportmap/node/comment','NodeCommentController');
