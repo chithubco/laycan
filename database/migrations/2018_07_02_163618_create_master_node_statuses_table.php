@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNodesTable extends Migration
+class CreateMasterNodeStatusesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,12 @@ class CreateNodesTable extends Migration
      */
     public function up()
     {
-        Schema::create('nodes', function (Blueprint $table) {
+        Schema::create('master_node_statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('user_id');
-            $table->integer('master_node_status_id')->default(1);
+            $table->text('description')->nullable();
+            $table->string('label');
+            $table->string('state');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateNodesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('nodes');
+        Schema::drop('master_node_statuses');
     }
 }

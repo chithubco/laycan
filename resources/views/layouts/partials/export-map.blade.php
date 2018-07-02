@@ -92,15 +92,34 @@
 					<ul class="timeline">
 						@foreach($nodes->getAll() as $node)
 						<li class="timeline-item">
-							<div class="timeline-badge warning"><i class="glyphicon glyphicon-off"></i></div>
+							<div class="timeline-badge {{ $node->status->label }}"><i class="glyphicon glyphicon-{{ $node->status->state }}"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
 									<h4 class="timeline-title">{{ $node->name }}</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by AGBOGO Michael</small></p>
+									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by {{ $node->user->name }}</small>
+									</p>
 								</div>
-								<div class="timeline-body">
-									<p>Basic Export Details entered into the system and updated</p>
-								</div>
+								@foreach($node->nodeElements as $nodeElement)	
+										<div class="timeline-body alert alert-{{ $nodeElement->status->label }}" role="alert" id="nodeElementDiv">
+												<div class="row">
+													<div class="col-md-1">
+														<i class="glyphicon glyphicon-off"></i>
+													</div>
+													<div class="col-md-11">
+														<p>{{ $nodeElement->title }} <button class="btn btn-xs btn-{{ $nodeElement->status->label }}">{{ $nodeElement->status->name }}</button></p>
+													</div>
+												</div>
+												<div>
+													<p><small class="text-muted">{{ $nodeElement->description }}</small></p>
+												</div>
+												@foreach($nodeElement->comments as $comment)
+													<div class="alert alert-warning" role="alert">
+														<p class="text-muted">Comment : <small>{{ $comment->comment }}</small></p>
+														<div><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ $comment->created_at }} by {{ $comment->user->name }}</small></p></div>
+													</div>
+												@endforeach
+										</div>
+								@endforeach
 							</div>
 						</li>
 						@endforeach

@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
         $this->call(NodeSeeder::class);
         $this->call(NodeElementSeeder::class);
         $this->call(NodeElementCommentSeeder::class);
+        $this->call(NodeElementStatusSeeder::class);
+        $this->call(MasterMasterNodeStatusSeeder::class);
         //$this->call(DailyProductionSeeder::class);
         //$this->call(DailyProductionCommentSeeder::class);
     }
