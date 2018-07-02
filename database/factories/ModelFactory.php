@@ -116,3 +116,13 @@ $factory->define(App\Export::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+$factory->define(App\Node::class, function (Faker\Generator $faker) {
+    
+    $nodeNames = array("CURTAILMENT PACKAGE","NOMINATION LETTERS","CLEARANCES","NPX DOCUMENTS","CARGO DOCUMENTATION","OUTTURN VERIFICATION","LOSS CLAIM","CCI PROCESSING");
+
+    return [
+        'name' => $nodeNames[array_rand($nodeNames)],
+        'user_id' => 1,
+    ];
+});

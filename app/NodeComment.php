@@ -1,0 +1,10 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class NodeComment extends Model
+{
+    protected $fillable = ['node_element_id','comment','user_id'];
+}
