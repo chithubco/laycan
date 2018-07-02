@@ -49,8 +49,8 @@
         <a href="#" class="list-group-item active">
           Reports Management Quick Access
         </a>
-        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Production Data</a>
-        <a href="#" class="list-group-item"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Daily Report</a>
+        <a href="#" class="list-group-item" data-toggle="modal" data-target="#addProductionModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Production Data</a>
+        <a href="#" class="list-group-item" data-toggle="modal" data-target="#addDailyProductionModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Daily Report</a>
         <a href="#" class="list-group-item"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Send Daily Report</a>
         <a href="#" class="list-group-item"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Send COMD Report</a>
       </div>
