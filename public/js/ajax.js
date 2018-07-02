@@ -6,4 +6,8 @@ $(document).ready(function(){
 		$('#modalInputTemplateDocumentDescription').val($(e.relatedTarget).attr('data-description'));
 		$('#modalInputDocumentTemplateTerminalID option:selected').text($(e.relatedTarget).attr('data-terminal'));
 	})
+
+	$('#nodeElementDiv').on('click',function(e){
+		$('#nodeElementDiv').hide();
+	})
 })

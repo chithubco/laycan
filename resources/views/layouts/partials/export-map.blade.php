@@ -1,3 +1,5 @@
+@inject('nodes','App\Node')
+
 <div class="container">
  {{--    		<div class="row">
 				<div class="col-md-12">
@@ -88,104 +90,39 @@
 					  <h1>Export Timeline</h1>
 					</div>
 					<ul class="timeline">
+						@foreach($nodes->getAll() as $node)
 						<li class="timeline-item">
-							<div class="timeline-badge warning"><i class="glyphicon glyphicon-off"></i></div>
+							<div class="timeline-badge {{ $node->status->label }}"><i class="glyphicon glyphicon-{{ $node->status->state }}"></i></div>
 							<div class="timeline-panel">
 								<div class="timeline-heading">
-									<h4 class="timeline-title">Basic Export Data Entered</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by AGBOGO Michael</small></p>
+									<h4 class="timeline-title">{{ $node->name }}</h4>
+									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by {{ $node->user->name }}</small>
+									</p>
 								</div>
-								<div class="timeline-body">
-									<p>Basic Export Details entered into the system and updated</p>
-								</div>
+								@foreach($node->nodeElements as $nodeElement)	
+										<div class="timeline-body alert alert-{{ $nodeElement->status->label }}" role="alert" id="nodeElementDiv">
+												<div class="row">
+													<div class="col-md-1">
+														<i class="glyphicon glyphicon-off"></i>
+													</div>
+													<div class="col-md-11">
+														<p>{{ $nodeElement->title }} <button class="btn btn-xs btn-{{ $nodeElement->status->label }}">{{ $nodeElement->status->name }}</button></p>
+													</div>
+												</div>
+												<div>
+													<p><small class="text-muted">{{ $nodeElement->description }}</small></p>
+												</div>
+												@foreach($nodeElement->comments as $comment)
+													<div class="alert alert-warning" role="alert">
+														<p class="text-muted">Comment : <small>{{ $comment->comment }}</small></p>
+														<div><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> {{ $comment->created_at }} by {{ $comment->user->name }}</small></p></div>
+													</div>
+												@endforeach
+										</div>
+								@endforeach
 							</div>
 						</li>
-						<li class="timeline-item">
-							<div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">Nomination Letter Ready and Sent</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by AGBOGO Michael</small></p>
-								</div>
-								<div class="timeline-body">
-									<p>Nomination Letter for AGB-009 Generate and send to DPR and NNPC</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-item">
-							<div class="timeline-badge success"><i class="glyphicon glyphicon-bookmark"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">NXP Forms Ready</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by Odeyemo Dapo</small></p>
-								</div>
-								<div class="timeline-body">
-									<p>NXP Forms Filled and sent to Finance. Recieved Bank copies</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-item">
-							<div class="timeline-badge info"><i class="glyphicon glyphicon-check"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">DI Recieved</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by ABGOOLA Ayo</small></p>
-								</div>
-								<div class="timeline-body">
-									<p>Document Instruction Recieved from PSAT. Noted that NNPC needed to sell their cargo on the spot market</p>
-									<p>There might be a need to revise the DI if ne w data becomes available and we can get things to work the way it is intended</p>
-									
-								</div>
-							</div>
-						</li>
-						<li class="timeline-item">
-							<div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">Document Instruction Sent to Terminal</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by AGBOLAE Popoola	</small></p>
-								</div>
-								<div class="timeline-body">
-									<p>Document Instruction sent to the teminal senior mooring master and production planners</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-item">
-							<div class="timeline-badge warning"><i class="glyphicon glyphicon-unchecked"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">NNPC Clearance Recieved</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by AGUSTUS Famose</small></p>
-								</div>
-								<div class="timeline-body">
-									<p>NNPC Clerance Revieved for lifting</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-item">
-							<div class="timeline-badge danger"><i class="glyphicon glyphicon-bell"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">DPR Clerance Recieved</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by TIMOTHY Daniel</small></p>
-								</div>
-								<div class="timeline-body">
-									<p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-								</div>
-							</div>
-						</li>
-						<li class="timeline-item">
-							<div class="timeline-badge primary"><i class="glyphicon glyphicon-minus-sign"></i></div>
-							<div class="timeline-panel">
-								<div class="timeline-heading">
-									<h4 class="timeline-title">3Q Export Permit Available</h4>
-									<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago by SENIOR Mooring Master</small></p>
-								</div>
-								<div class="timeline-body">
-									<p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
-								</div>
-							</div>
-						</li>
+						@endforeach
 					</ul>
 				</div>
 			</div>

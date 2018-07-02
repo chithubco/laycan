@@ -20,6 +20,11 @@ class DatabaseSeeder extends Seeder
         $this->call(CargoTypeSeeder::class);
         $this->call(TerminalProductSeeder::class);
         $this->call(DocumentCategorySeeder::class);
+        $this->call(NodeSeeder::class);
+        $this->call(NodeElementSeeder::class);
+        $this->call(NodeElementCommentSeeder::class);
+        $this->call(NodeElementStatusSeeder::class);
+        $this->call(MasterMasterNodeStatusSeeder::class);
         //$this->call(DailyProductionSeeder::class);
         //$this->call(DailyProductionCommentSeeder::class);
     }
