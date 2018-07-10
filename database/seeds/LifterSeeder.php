@@ -14,19 +14,15 @@ class LifterSeeder extends Seeder
     public function run()
     {
         Lifter::create([
-        	'name' => 'NNPC',
-        	'terminal_id'=> 1,
-        ]);
-        Lifter::create([
-        	'name' => 'CNL',
-        	'terminal_id'=> 1,
-        ]);
-        Lifter::create([
         	'name' => 'STARTDEEP',
-        	'terminal_id'=> 5,
+        	'terminal_id'=> 1,
         ]);
         Lifter::create([
-        	'name' => 'TINOS',
+        	'name' => 'NNPC-2',
+        	'terminal_id'=> 1,
+        ]);
+        Lifter::create([
+        	'name' => 'TNOS',
         	'terminal_id'=> 5,
         ]);
         Lifter::create([
@@ -34,15 +30,19 @@ class LifterSeeder extends Seeder
         	'terminal_id'=> 5,
         ]);
         Lifter::create([
+        	'name' => 'PETROBRAS',
+        	'terminal_id'=> 5,
+        ]);
+        Lifter::create([
         	'name' => 'FAMFA',
         	'terminal_id'=> 5,
         ]);
         Lifter::create([
-        	'name' => 'NNPC-2',
+        	'name' => 'NNPC',
         	'terminal_id'=> 5,
         ]);
         Lifter::create([
-        	'name' => 'NNPC',
+        	'name' => 'CNL',
         	'terminal_id'=> 2,
         ]);
 

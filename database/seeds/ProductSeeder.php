@@ -25,10 +25,10 @@ class ProductSeeder extends Seeder
             'name' => 'NAPHTHA'
         ]);
         Product::create([
-            'name' => 'LPG'
+            'name' => 'TRANSMIX'
         ]);
         Product::create([
-            'name' => 'TRANSMIX'
+            'name' => 'LPG'
         ]);
     }
 }

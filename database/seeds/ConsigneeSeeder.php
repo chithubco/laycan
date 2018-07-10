@@ -17,6 +17,10 @@ class ConsigneeSeeder extends Seeder
         	'terminal_id' => 2,
         ]);
         Consignee::create([
+            'name' => 'NNPC Consignee',
+            'terminal_id' => 1,
+        ]);
+        Consignee::create([
         	'name' => 'Eastern Hydrocarbon Funding LTD',
         	'terminal_id' => 1,
         ]);
@@ -24,9 +28,6 @@ class ConsigneeSeeder extends Seeder
         	'name' => 'Western Hydrocarbon Funding',
         	'terminal_id' => 1,
         ]);
-        Consignee::create([
-        	'name' => 'NNPC Consignee',
-        	'terminal_id' => 1,
-        ]);
+
     }
 }

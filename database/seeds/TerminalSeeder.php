@@ -13,11 +13,15 @@ class TerminalSeeder extends Seeder
     public function run()
     {
         Terminal::create([
-                'name'=> 'ESCRAVOS',
+            'name'=> 'AGBAMI',
+            'user_id' => 1,
+        ]);
+        Terminal::create([
+                'name'=> 'EGTL',
                 'user_id' => 1,
         ]);
         Terminal::create([
-            'name'=> 'EGTL',
+            'name'=> 'ESCRAVOS',
             'user_id' => 1,
         ]);
         Terminal::create([
@@ -28,9 +32,6 @@ class TerminalSeeder extends Seeder
             'name'=> 'LP FSO',
             'user_id' => 1,
         ]);
-        Terminal::create([
-            'name'=> 'AGBAMI',
-            'user_id' => 1,
-        ]);
+
     }
 }
