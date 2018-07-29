@@ -26,6 +26,8 @@ Route::get('/test',function(){
 	return is_string($arrayName[array_rand($arrayName)]);
 });
 
+Route::resource('lifting/program','LiftingProgramController');
+
 Route::resource('/production/create','DailyProductionController');
 Route::resource('/export','ExportController');
 Route::resource('/terminal','TerminalController');
