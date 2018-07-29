@@ -121,6 +121,11 @@
          @include('layouts.modals.email-document-template')
     </div>
 
+    </div>
+        <div>
+         @include('layouts.modals.create-lifting-program')
+    </div>
+
     @yield('content')
 
     <!-- JavaScripts -->

@@ -38,14 +38,14 @@ class LiftingProgramTableSeeder extends Seeder
 
     		$daily_pro = $faker->numberBetween(206000,209000);
     		$cumm_prod = $cumm_prod + $daily_pro;
-    		$stardeep_cumm = $stardeep_cumm + ($daily_pro * 0.134);
-	    	$famfa_cumm = $famfa_cumm +($daily_pro * 0.134);
-	    	$taxoil_cumm = $taxoil_cumm +($daily_pro * 0.134);
-	    	$petrobras_cumm = $petrobras_cumm +($daily_pro * 0.134);
-	    	$nnpc1_cumm = $nnpc1_cumm +($daily_pro * 0.134);
-	    	$statoil_cumm = $statoil_cumm +($daily_pro * 0.134);
-	    	$tnos_cumm = $tnos_cumm +($daily_pro * 0.134);
-	    	$nnpc2_cumm = $nnpc2_cumm +($daily_pro * 0.134);
+            $stardeep_cumm = $stardeep_cumm + ($daily_pro * 0.209537229000666);
+            $famfa_cumm = $famfa_cumm +($daily_pro * 0.0806932363368615);
+            $taxoil_cumm = $taxoil_cumm +($daily_pro * 0.282004227412306);
+            $petrobras_cumm = $petrobras_cumm +($daily_pro * 0.0523843072501665);
+            $nnpc1_cumm = $nnpc1_cumm +($daily_pro * 0.0);
+            $statoil_cumm = $statoil_cumm +($daily_pro * 0.08353226739075585);
+            $tnos_cumm = $tnos_cumm +($daily_pro * 0.0726712646295539);
+            $nnpc2_cumm = $nnpc2_cumm +($daily_pro * 0.219177467979688);
 	    	$productionDate = $today->addDay();
 
 

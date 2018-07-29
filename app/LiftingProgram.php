@@ -11,13 +11,13 @@ class LiftingProgram extends Model
     protected $fillable = ['batch','date','production','cummulative_production','lifting','lifter','laycan','STARTDEEP','FAMFA','TAXOIL','PETROBRAS','NNPC-1',
 		'STATOIL','NNPC-2','TNOS','STARTDEEP_CUMM','FAMFA_CUMM','TAXOIL_CUMM','PETROBRAS_CUMM','NNPC-1_CUMM','STATOIL_CUMM','TNOS_CUMM','NNPC-2_CUMM'];
 
-	public function generateLiftingProgram($forecastVolume,$STARTDEEPOB,$FAMAOB,$PETROBREASOB,$TAXOILOB,$STATOILOB,$TNOSOB,$NNPC_2OH){
+	public function generateLiftingProgram($forecastVolume,$STARTDEEPOB,$FAMAOB,$PETROBREASOB,$TAXOILOB,$STATOILOB,$TNOSOB,$NNPC_2OH,$forcastStartDate){
 			
 		
 		
 		$faker = Factory::create();
     	$batch_no = $faker->postcode;
-    	$today = Carbon::today();
+    	$today = Carbon::parse($forcastStartDate);
     	$layCanDate = null;
 
     	$cumm_prod = 0;
@@ -35,18 +35,18 @@ class LiftingProgram extends Model
     	$lifterName = "";
 
 
-    	for ($i=0; $i < 365; $i++) { 
+    	for ($i=0; $i < 90; $i++) { 
 
     		$daily_pro = $forecastVolume;
     		$cumm_prod = $cumm_prod + $daily_pro;
-    		$stardeep_cumm = $stardeep_cumm + ($daily_pro * 0.134);
-	    	$famfa_cumm = $famfa_cumm +($daily_pro * 0.134);
-	    	$taxoil_cumm = $taxoil_cumm +($daily_pro * 0.134);
-	    	$petrobras_cumm = $petrobras_cumm +($daily_pro * 0.134);
-	    	$nnpc1_cumm = $nnpc1_cumm +($daily_pro * 0.134);
-	    	$statoil_cumm = $statoil_cumm +($daily_pro * 0.134);
-	    	$tnos_cumm = $tnos_cumm +($daily_pro * 0.134);
-	    	$nnpc2_cumm = $nnpc2_cumm +($daily_pro * 0.134);
+    		$stardeep_cumm = $stardeep_cumm + ($daily_pro * 0.209537229000666);
+	    	$famfa_cumm = $famfa_cumm +($daily_pro * 0.0806932363368615);
+	    	$taxoil_cumm = $taxoil_cumm +($daily_pro * 0.282004227412306);
+	    	$petrobras_cumm = $petrobras_cumm +($daily_pro * 0.0523843072501665);
+	    	$nnpc1_cumm = $nnpc1_cumm +($daily_pro * 0.0);
+	    	$statoil_cumm = $statoil_cumm +($daily_pro * 0.08353226739075585);
+	    	$tnos_cumm = $tnos_cumm +($daily_pro * 0.0726712646295539);
+	    	$nnpc2_cumm = $nnpc2_cumm +($daily_pro * 0.219177467979688);
 	    	$productionDate = $today->addDay();
 
 
@@ -133,8 +133,25 @@ class LiftingProgram extends Model
         	'lifter' => $lifterName,
         	]);
 
+        	
+
         	$layCanDate = null;
         	$lifterName ="";
 		}
+
+		LPBatch::created([
+        		'batch_id' => $batch_no,
+        		'daily_production' => $daily_pro,
+        		'STARDEEPBOH' => $STARTDEEPOB,
+        		'FAMFABOH' => $FAMAOB,
+        		'PETROBRASBOH' => $PETROBREASOB,
+        		'TAXOILBOH' => $TAXOILOB,
+        		'STATOILBOH' => $STATOILOB,
+        		'TNOSBOH' => $TNOSOB,
+        		'NNPC-1BOH' => $NNPC_2OH,
+        		'forecast_start_date' => $batch_no,
+        		'user_id' => Auth::user()->id
+
+        ]);
 	}
 }

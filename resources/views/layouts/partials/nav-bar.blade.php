@@ -9,5 +9,5 @@
 {{-- 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCargotype">CargoType</button> --}}
 {{-- 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addConsignee">Consignee</button> --}}
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addDocumentTemplateModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Doc Templates</button>
-	<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Setting</button>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createLiftingProgramModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Lifting Program</button>
 </div>

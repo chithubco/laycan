@@ -36,7 +36,7 @@ class CreateLiftingProgramsTable extends Migration
             $table->integer('NNPC-2_CUMM');
             $table->boolean('lifting')->default(0);
             $table->string('lifter')->nullable();
-            $table->string('laycan')->nullable();
+            $table->date('laycan')->nullable();
             $table->timestamps();
         });
     }
