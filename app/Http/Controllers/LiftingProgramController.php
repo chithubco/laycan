@@ -55,7 +55,7 @@ class LiftingProgramController extends Controller
     public function store(Request $request)
     {
         $lp = new LiftingProgram;
-        $lp->generateLiftingProgram($request['foreCastVolume'],$request['BOH'],$request['STARDEEPBOH'],$request['FAMFABOH'],$request['PETROBRASBOH'],$request['TAXOILBOH'],$request['STATOILBOH'],$request['TNOSBOH'],$request['NNPC-1BOH'],$request['forecastStartDate'],$request['comment']);
+        $lp->generateLiftingProgram($request['foreCastVolume'],$request['BOH'],$request['STARDEEPBOH'],$request['FAMFABOH'],$request['PETROBRASBOH'],$request['TAXOILBOH'],$request['STATOILBOH'],$request['TNOSBOH'],$request['NNPC-1BOH'],$request['forecastStartDate'],$request['comment'],$request['duration']);
 
         flash('Lifting Program Successfully Generated')->success()->important();
         return redirect()->back();
@@ -71,7 +71,7 @@ class LiftingProgramController extends Controller
     public function show($id)
     {
 
-        $liftingPrograms = LiftingProgram::where('batch','=','98054')->orderBy('created_at','desc')->get();
+        $liftingPrograms = LiftingProgram::where('batch','=',$id)->orderBy('date','asc')->get();
         // $liftingPrograms = LiftingProgram::where('batch','=','98054');
 
         return view('user.lifting-program-list',compact('liftingPrograms'));

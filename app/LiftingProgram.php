@@ -13,7 +13,7 @@ class LiftingProgram extends Model
     protected $fillable = ['batch','date','production','cummulative_production','lifting','lifter','laycan','STARTDEEP','FAMFA','TAXOIL','PETROBRAS','NNPC-1',
 		'STATOIL','NNPC-2','TNOS','STARTDEEP_CUMM','FAMFA_CUMM','TAXOIL_CUMM','PETROBRAS_CUMM','NNPC-1_CUMM','STATOIL_CUMM','TNOS_CUMM','NNPC-2_CUMM'];
 
-	public function generateLiftingProgram($forecastVolume,$BOH,$STARTDEEPOB,$FAMAOB,$PETROBREASOB,$TAXOILOB,$STATOILOB,$TNOSOB,$NNPC_2OH,$forcastStartDate,$comment){
+	public function generateLiftingProgram($forecastVolume,$BOH,$STARTDEEPOB,$FAMAOB,$PETROBREASOB,$TAXOILOB,$STATOILOB,$TNOSOB,$NNPC_2OH,$forcastStartDate,$comment,$duration){
 			
 		
 		
@@ -27,8 +27,8 @@ class LiftingProgram extends Model
     	
     	$stardeep_cumm = $STARTDEEPOB ;
     	$famfa_cumm = $FAMAOB;
-    	$taxoil_cumm = $PETROBREASOB;
-    	$petrobras_cumm = $TAXOILOB;
+    	$taxoil_cumm = $TAXOILOB;
+        $petrobras_cumm = $PETROBREASOB;
     	$nnpc1_cumm = 0;
     	$statoil_cumm = $STATOILOB;
     	$tnos_cumm = $TNOSOB;
@@ -54,7 +54,7 @@ class LiftingProgram extends Model
 
       
 
-    	for ($i=0; $i < 90; $i++) { 
+    	for ($i=0; $i < $duration; $i++) { 
 
     		$daily_pro = $forecastVolume;
     		$cumm_prod = $cumm_prod + $daily_pro;
@@ -71,16 +71,18 @@ class LiftingProgram extends Model
 
 	    	$hasLifting = 0 ;
 
-	    	if ($cumm_prod > 1400000) {
+	    	if ($cumm_prod > 1500000) {
 	    		$hasLifting = 1;
 	    		$cumm_prod = $cumm_prod - 975000;
 	    		$layCanDate = $productionDate;
 
+                //Get the total volume for each OML for comparison
 	    		$OML_127 = $stardeep_cumm + $famfa_cumm + $taxoil_cumm + $petrobras_cumm + $nnpc1_cumm;
-	    		$OML_128 = $tnos_cumm + $statoil_cumm;
+	    		$OML_128 = $tnos_cumm + $statoil_cumm + $nnpc2_cumm;
 
-	    		if ($OML_127 > $OML_128) {
+	    		if ($OML_127 > $OML_128) { //Determine which OML should lift
 	    			
+                    //Check who should lift with OML 127
 	    			$maxVolume = max($stardeep_cumm,$famfa_cumm,$taxoil_cumm,$petrobras_cumm);
 	    			if ($maxVolume == $stardeep_cumm) {
 	    				
@@ -103,13 +105,15 @@ class LiftingProgram extends Model
 	    			$lifterName = "OML 128";
 
 	    			//ADD NNPC OVERLIFT LOGIC TO SYSTEM
-	    			$statOilShare = $nnpc2_cumm * 0.58;
-	    			$tnosShare = $nnpc2_cumm * 0.58;
+	    			$statOilShare = $nnpc2_cumm * 0.4615;
+	    			$tnosShare = $nnpc2_cumm * 0.5385;
 
 	    			$newStatOilShare = $statoil_cumm - $statOilShare;
 	    			$newTNOSShare = $tnos_cumm - $tnosShare;
 
 	    			$maxVolume = max($newStatOilShare,$newTNOSShare);
+
+                    //A logic needs ot be here to give NNPC a cargo after every set of cargos
 
 	    			if ($maxVolume == $newStatOilShare) {
 	    				$lifterName = "OML 128-STATOIL";
@@ -127,29 +131,29 @@ class LiftingProgram extends Model
 
 
     		LiftingProgram::create([
-        	'batch' => $batch_no,
-        	'date' => $productionDate,
-        	'production' => $daily_pro ,
-        	'cummulative_production' => $cumm_prod,
-        	'STARTDEEP' => $daily_pro * 0.134,
-        	'STARTDEEP_CUMM' => $stardeep_cumm,
-        	'FAMFA' => $daily_pro * 0.134,
-        	'FAMFA_CUMM' => $famfa_cumm,
-        	'TAXOIL' => $daily_pro * 0.134,
-        	'TAXOIL_CUMM' => $taxoil_cumm,
-        	'PETROBRAS' => $daily_pro * 0.134,
-        	'PETROBRAS_CUMM' => $petrobras_cumm,
-        	'NNPC-1' => $daily_pro * 0.134,
-        	'NNPC-1_CUMM' => $nnpc1_cumm,
-        	'STATOIL' => $daily_pro * 0.134,
-        	'STATOIL_CUMM' => $statoil_cumm,
-        	'NNPC-2' => $daily_pro * 0.134,
-        	'NNPC-2_CUMM' => $nnpc2_cumm,
-        	'TNOS' => $daily_pro * 0.134,
-        	'TNOS_CUMM' => $tnos_cumm,
-        	'lifting' => $hasLifting,
-        	'laycan' => $layCanDate,
-        	'lifter' => $lifterName,
+            	'batch' => $batch_no,
+            	'date' => $productionDate,
+            	'production' => $daily_pro ,
+            	'cummulative_production' => $cumm_prod,
+            	'STARTDEEP' => $daily_pro * 0.209537229000666,
+            	'STARTDEEP_CUMM' => $stardeep_cumm,
+            	'FAMFA' => $daily_pro * 0.0806932363368615,
+            	'FAMFA_CUMM' => $famfa_cumm,
+            	'TAXOIL' => $daily_pro * 0.282004227412306,
+            	'TAXOIL_CUMM' => $taxoil_cumm,
+            	'PETROBRAS' => $daily_pro * 0.0523843072501665,
+            	'PETROBRAS_CUMM' => $petrobras_cumm,
+            	'NNPC-1' => $daily_pro * 0.0,
+            	'NNPC-1_CUMM' => $nnpc1_cumm,
+            	'STATOIL' => $daily_pro * 0.08353226739075585,
+            	'STATOIL_CUMM' => $statoil_cumm,
+            	'NNPC-2' => $daily_pro * 0.0726712646295539,
+            	'NNPC-2_CUMM' => $nnpc2_cumm,
+            	'TNOS' => $daily_pro * 0.219177467979688,
+            	'TNOS_CUMM' => $tnos_cumm,
+            	'lifting' => $hasLifting,
+            	'laycan' => $layCanDate,
+            	'lifter' => $lifterName,
         	]);
 
         	

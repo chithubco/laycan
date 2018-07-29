@@ -58,28 +58,29 @@
             <label for="inputTNOSBOH">OPENING BALANCE</label>
             <input type="text" class="form-control" id="inputTNOSBOH" placeholder="-50000" name="BOH">
           </div>
-         {{--  <div class="form-group col-md-4">
-            <label for="inputNNPCBOH">OML 128 NNPC STOCK POSITION</label>
-            <input type="text" class="form-control" id="inputNNPCBOH" placeholder="-50000" name="NNPC-1BOH">
+          <div class="form-group col-md-4">
+            <label for="inputNNPCBOH">DURATION (DAYS)</label>
+            <input type="text" class="form-control" id="inputNNPCBOH" placeholder="90" name="duration">
           </div>
           <div class="form-group col-md-4">
-            <label for="inputETA">START DATE</label>
-            <input type="date" class="form-control" id="inputETA" name="forecastStartDate">
-          </div> --}}
+            {{-- <label for="inputETA">START DATE</label>
+            <input type="date" class="form-control" id="inputETA" name="forecastStartDate"> --}}
+          </div>
        </div>
 
-
-      <div class="form-group">
-            <label for="inputComment">Comments</label>
-            <textarea class="form-control" id="inputComment" rows="4" name="comment"></textarea>
-       </div>
-
-
-       <div class="modal-footer">
       <div class="form-row">
+        <div class="form-group col-md-12">
+              <label for="inputComment">Comments</label>
+              <textarea class="form-control" id="inputComment" rows="4" name="comment"></textarea>
+         </div>
+      </div>
+       <div class="modal-footer">
+            <div class="form-row">
+                <div class="form-group col-md-12">
                   <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                   {{-- <button type="button" class="btn btn-primary" id="butClearDailyProduction">Clear Field</button> --}}
                   <button type="submit" class="btn btn-primary">Generate LP</button>
+                </div>
             </div>
        </div>
   </form>
