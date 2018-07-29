@@ -22,7 +22,7 @@
         <a href="#" class="list-group-item active">
           Lifting Program Management
         </a>
-        <a href="{{ route('lifting.program.index') }}" class="list-group-item"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>Lifting Program List</a>
+        <a href="{{ route('lp.batch.index') }}" class="list-group-item"><span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span>Lifting Program List</a>
         <a data-toggle="modal" href="#createLiftingProgramModal" class="list-group-item"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Create New Lifting Program</a>
         <a href="#" class="list-group-item">Create Allocation</a>
         <a href="#" class="list-group-item" data-toggle="modal" data-target="#addTerminalModal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Terminal</a>

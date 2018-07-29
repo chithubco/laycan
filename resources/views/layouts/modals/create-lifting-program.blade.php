@@ -45,7 +45,7 @@
           </div>
           <div class="form-group col-md-4">
             <label for="inputNNPCBOH">OML 128 NNPC STOCK POSITION</label>
-            <input type="date" class="form-control" id="inputNNPCBOH" placeholder="-50000" name="NNPC-1BOH">
+            <input type="text" class="form-control" id="inputNNPCBOH" placeholder="-50000" name="NNPC-1BOH">
           </div>
           <div class="form-group col-md-4">
             <label for="inputETA">START DATE</label>
@@ -53,10 +53,25 @@
           </div>
        </div>
 
+      <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="inputTNOSBOH">OPENING BALANCE</label>
+            <input type="text" class="form-control" id="inputTNOSBOH" placeholder="-50000" name="BOH">
+          </div>
+         {{--  <div class="form-group col-md-4">
+            <label for="inputNNPCBOH">OML 128 NNPC STOCK POSITION</label>
+            <input type="text" class="form-control" id="inputNNPCBOH" placeholder="-50000" name="NNPC-1BOH">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputETA">START DATE</label>
+            <input type="date" class="form-control" id="inputETA" name="forecastStartDate">
+          </div> --}}
+       </div>
+
 
       <div class="form-group">
             <label for="inputComment">Comments</label>
-            <textarea class="form-control" id="inputComment" rows="4" name="agbamiComment"></textarea>
+            <textarea class="form-control" id="inputComment" rows="4" name="comment"></textarea>
        </div>
 
 

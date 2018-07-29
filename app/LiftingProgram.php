@@ -2,16 +2,18 @@
 
 namespace App;
 
+use App\LPBatch;
 use Carbon\Carbon;
 use Faker\Factory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class LiftingProgram extends Model
 {
     protected $fillable = ['batch','date','production','cummulative_production','lifting','lifter','laycan','STARTDEEP','FAMFA','TAXOIL','PETROBRAS','NNPC-1',
 		'STATOIL','NNPC-2','TNOS','STARTDEEP_CUMM','FAMFA_CUMM','TAXOIL_CUMM','PETROBRAS_CUMM','NNPC-1_CUMM','STATOIL_CUMM','TNOS_CUMM','NNPC-2_CUMM'];
 
-	public function generateLiftingProgram($forecastVolume,$STARTDEEPOB,$FAMAOB,$PETROBREASOB,$TAXOILOB,$STATOILOB,$TNOSOB,$NNPC_2OH,$forcastStartDate){
+	public function generateLiftingProgram($forecastVolume,$BOH,$STARTDEEPOB,$FAMAOB,$PETROBREASOB,$TAXOILOB,$STATOILOB,$TNOSOB,$NNPC_2OH,$forcastStartDate,$comment){
 			
 		
 		
@@ -20,8 +22,8 @@ class LiftingProgram extends Model
     	$today = Carbon::parse($forcastStartDate);
     	$layCanDate = null;
 
-    	$cumm_prod = 0;
-    	$daily_pro = 0;
+    	$cumm_prod = $BOH;
+    	$daily_pro = $forecastVolume;
     	
     	$stardeep_cumm = $STARTDEEPOB ;
     	$famfa_cumm = $FAMAOB;
@@ -34,6 +36,23 @@ class LiftingProgram extends Model
 
     	$lifterName = "";
 
+    	$LP_Log = LPBatch::create([
+        		'batch_id' => $batch_no,
+        		'daily_production' => $daily_pro,
+        		'STARDEEPBOH' => $STARTDEEPOB,
+        		'FAMFABOH' => $FAMAOB,
+        		'PETROBRASBOH' => $PETROBREASOB,
+        		'TAXOILBOH' => $TAXOILOB,
+        		'STATOILBOH' => $STATOILOB,
+        		'TNOSBOH' => $TNOSOB,
+        		'NNPC-1BOH' => $NNPC_2OH,
+        		'forecast_start_date' => $forcastStartDate,
+        		'user_id' => Auth::user()->id,
+        		'comment' => $comment
+
+        ]);
+
+      
 
     	for ($i=0; $i < 90; $i++) { 
 
@@ -139,19 +158,6 @@ class LiftingProgram extends Model
         	$lifterName ="";
 		}
 
-		LPBatch::created([
-        		'batch_id' => $batch_no,
-        		'daily_production' => $daily_pro,
-        		'STARDEEPBOH' => $STARTDEEPOB,
-        		'FAMFABOH' => $FAMAOB,
-        		'PETROBRASBOH' => $PETROBREASOB,
-        		'TAXOILBOH' => $TAXOILOB,
-        		'STATOILBOH' => $STATOILOB,
-        		'TNOSBOH' => $TNOSOB,
-        		'NNPC-1BOH' => $NNPC_2OH,
-        		'forecast_start_date' => $batch_no,
-        		'user_id' => Auth::user()->id
-
-        ]);
+		
 	}
 }

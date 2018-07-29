@@ -25,6 +25,7 @@ class CreateLPBatchesTable extends Migration
             $table->integer('NNPC-1BOH');
             $table->date('forecast_start_date');
             $table->integer('user_id');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

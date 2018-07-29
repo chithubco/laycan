@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MasterMasterNodeStatusSeeder::class);
         //$this->call(DailyProductionSeeder::class);
         //$this->call(DailyProductionCommentSeeder::class);
-        $this->call(LiftingProgramTableSeeder::class);
+        // $this->call(LiftingProgramTableSeeder::class);
         $this->call(AllocationTableSeeder::class);
     }
 }

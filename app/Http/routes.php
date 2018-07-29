@@ -27,6 +27,7 @@ Route::get('/test',function(){
 });
 
 Route::resource('lifting/program','LiftingProgramController');
+Route::resource('lp/batch','LPBatchController');
 
 Route::resource('/production/create','DailyProductionController');
 Route::resource('/export','ExportController');
