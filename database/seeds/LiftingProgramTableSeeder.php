@@ -21,6 +21,7 @@ class LiftingProgramTableSeeder extends Seeder
 
     	$cumm_prod = 0;
     	$daily_pro = 0;
+    	
     	$stardeep_cumm = 0;
     	$famfa_cumm = 0;
     	$taxoil_cumm = 0;
@@ -82,12 +83,19 @@ class LiftingProgramTableSeeder extends Seeder
 	    			$lifterName = "OML 128";
 
 	    			//ADD NNPC OVERLIFT LOGIC TO SYSTEM
-	    			$maxVolume = max($statoil_cumm,$tnos_cumm);
-	    			if ($maxVolume == $statoil_cumm) {
+	    			$statOilShare = $nnpc2_cumm * 0.58;
+	    			$tnosShare = $nnpc2_cumm * 0.58;
+
+	    			$newStatOilShare = $statoil_cumm - $statOilShare;
+	    			$newTNOSShare = $tnos_cumm - $tnosShare;
+
+	    			$maxVolume = max($newStatOilShare,$newTNOSShare);
+
+	    			if ($maxVolume == $newStatOilShare) {
 	    				$lifterName = "OML 128-STATOIL";
 	    				$statoil_cumm = $statoil_cumm - 975000;
 
-	    			}elseif ($maxVolume == $tnos_cumm) {
+	    			}elseif ($maxVolume == $newTNOSShare) {
 	    				$lifterName = "OML 128-TNOS";
 	    				$tnos_cumm = $tnos_cumm - 975000;
 

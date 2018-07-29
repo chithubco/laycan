@@ -15,19 +15,23 @@ class LiftingProgramController extends Controller
      */
     public function index()
     {
-        $lps =  LiftingProgram::all();
-        $boh = 0;
+        // $lps =  LiftingProgram::where('lifting','=','1')->get();
+        $lp = new LiftingProgram;
+        $lp->generateLiftingProgram(209000,-5000,-50000,100000,9000,787676,4565656,-2000);
+        // $boh = 0;
 
-        foreach ($lps as $lp) {
+        // foreach ($lps as $lp) {
 
-            if ($lp->cummulative_production > 1400000) {
+        //     if ($lp->cummulative_production > 1400000) {
 
-                echo $lp->date."</br>";
-                $boh = $lp->cummulative_production - 975000;
-                // $lp->cummulative_production = $boh;
-                // $lp->cummulative_production->save();
-            }
-        }
+        //         echo $lp->date."</br>";
+        //         $boh = $lp->cummulative_production - 975000;
+        //         // $lp->cummulative_production = $boh;
+        //         // $lp->cummulative_production->save();
+        //     }
+        // }
+        // return $lps;
+
     }
 
     /**
